@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Contrasuli</title>
+        <meta charset="UTF-8">
+            <link href="css/estilos_2.css" rel="stylesheet" type="text/css"/>
+            <link href="css/menu_1.css" rel="stylesheet" type="text/css"/>
+            <link rel="stylesheet" 
+                  th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+            <link rel="stylesheet" 
+                  th:href="@{/webjars/font-awesome/css/all.css}"/>
+            <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+            <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+            <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                </head>
+                <body>
+
+                    <header class="logo nav-link" th:replace="layout/plantilla :: header"/>
+
+                    <nav th:replace="layout/plantilla :: nav"/> 
+
+                   
+                        <section>
+                            <h4> Buses Puriscal</h4>
+                            
+                            <p  class="new">La empresa de buses de Puriscal a San Jose maneja un control en linea de las ventas de sus servicos </p>
+                            <p  class="new">Puede encontrar informacion relevante respecto a horarios de los buses </p>
+                            <p  class="new">Detalles sobre las rutas </p>
+                            <p  class="new">Podra encontrar informacion sobre nuestras tarifas </p>
+                            <p  class="new">Y cual buses tenemos disponibles</p>
+                        </section>
+            
+
+                  
+                       
+                            <section>
+                                <h2 class="h2">Nuestra Empresa:</h2>
+                                <article>
+                                    <figure>
+
+
+                                        <img src="/images/buses.jpg" alt="imagen buses" width="800"  border="2"/>
+
+
+
+                                    </figure>
+                                    <p class="text-black-50">
+                COMTRASULI LTDA es un proveedor de transporte público en San José que opera rutas de Autobús.<br>
+                COMTRASULI LTDA tiene 10 rutas de Autobús en San José con 301 paradas de Autobús.<br>
+                Sus rutas de Autobús cubren un área desde la parada Terminal Comtrasuli Santiago,<br>
+                Puriscal hasta Terminal Comtrasuli San José y desde la parada Construplaza <br>
+                    Guachipelín, Escazú hasta Terminal Bajo Loaiza, Mora.
+                        </p>
+                                </article>  
+                            </section>
+                        
+                   
+                    
+                    
+                   
+
+
+                                            <footer>
+                                                <a2 th:replace="layout/plantilla :: footer"/></a2>
+                                            </footer>
+
+
+                                            </body>
+                                            </html>

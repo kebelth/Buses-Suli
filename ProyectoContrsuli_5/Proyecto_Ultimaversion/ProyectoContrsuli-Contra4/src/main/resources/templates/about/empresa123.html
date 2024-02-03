@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlsn:sec="http://www.thymeleaf.org/extras/springsecurity">
+    <head>
+        <title>Contrasuli</title>
+        <meta charset="UTF-8">
+
+            <link href="css/estilos_2.css" rel="stylesheet" type="text/css"/>
+            <link href="css/menu_1.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <header class="logo nav-link" th:replace="layout/plantilla :: header"/>
+        <nav th:replace="layout/plantilla :: nav"/>
+        
+        <div class="container">
+            <div class="row">
+                <h2>Nosotros</h2>
+                COMTRASULI LTDA es un proveedor de transporte público en San José que opera rutas de Autobús.
+                COMTRASULI LTDA tiene 10 rutas de Autobús en San José con 301 paradas de Autobús.
+                Sus rutas de Autobús cubren un área desde la parada Terminal Comtrasuli Santiago, 
+                Puriscal hasta Terminal Comtrasuli San José y desde la parada Construplaza Guachipelín, 
+                Escazú hasta Terminal Bajo Loaiza, Mora.
+                <section>
+                    <article>
+                        <figure>
+                            <img src="/imagen/buses.jpg" alt="imagen buses" width="800"  border="2"/>
+                        </figure>
+                    </article>  
+                </section>
+            </div>    
+        </div>
+
+        <footer>
+            <a2 th:replace="layout/plantilla :: footer"/></a2>
+        </footer>
+
+
+    </body>
+</html>

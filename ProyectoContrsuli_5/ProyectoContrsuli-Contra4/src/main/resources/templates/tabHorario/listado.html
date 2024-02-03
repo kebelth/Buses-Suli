@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
+    <head>
+    <title>Contrasuli</title>
+    <meta charset="UTF-8">
+    <link href="/css/estilos_2.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/menu_1.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" 
+              th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" 
+              th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+<body>
+    <header class="logo nav-link" th:replace="layout/plantilla :: header"/>
+    
+<nav th:replace="layout/plantilla :: nav"/> 
+
+
+<div class="conteiner">
+    <h2>Horarios</h2>
+    <table class="table">
+        <tr>
+            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/tabHorario/nuevo}" class="a">Nuevo horario</a></td>
+        </tr>
+    </table>
+</div>
+
+<section th:replace="tabHorario/fragmento_horario :: listado_horarios"/>
+
+
+
+
+<!--
+
+<div class="conteiner">
+    <h2>Horarios</h2>
+    <table class="table">
+        <tr>
+            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/tabHorario/nuevo}" class="a">Nuevo horario</a></td>
+        </tr>
+    </table>
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+            <div th:if="${tabHorarioes != null and !tabHorarioes.empty}">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Codigo de Ruta</th>
+                            <th>Unidad</th>
+                            <th>Hora</th>
+                            <th>Tipo de servicio</th>
+                            <th sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</th>
+                            <th sec:authorize="hasRole('ROLE_ADMIN')">Modificar</th>
+                        </tr>
+                    </thead>
+                    <tr th:each="tabHorario : ${tabHorarioes}">
+                        <td th:text="${tabHorario.rutId}"></td>
+                        <td th:text="${tabHorario.busId}"></td>
+                        <td th:text="${tabHorario.horHora}"></td>
+                        <td th:text="${tabHorario.horServicio}"></td>
+                        <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/tabHorario/eliminar/}+${tabHorario.horCodigo}">Eliminar</a></td>
+                        <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/tabHorario/modificar/}+${tabHorario.horCodigo}">Modificar</a></td>
+                    </tr>
+                </table>
+                <div th:if="${(tabHorarioes == null or tabHorarioes.empty)}">
+                    No tenemos tabHorario que mostrar...
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--
+<div class="contenido">
+    <h2>horarios :</h2>
+    <table class="th">
+        <tr>
+            <td><a th:href="@{/tabHorario/nuevo}" sec:authorize="hasRole('ROLE_ADMIN')" class="a">Nuevo horario</a></td>
+        </tr>
+    </table>
+
+
+
+
+
+
+    
+    
+    <section>
+    <div th:if="${tabHorarioes != null and !tabHorarioes.empty}">
+        <table class="td">
+            <thead>
+                <tr>
+                    <th>Codigo de Ruta</th>
+                    <th>Unidad</th>
+                    <th>Hora</th>
+                    <th>Tipo de servicio</th>
+                    <th>[[#{accion.eliminar}]]</th>
+                    <th>[[#{accion.editar}]]</th>
+                </tr>
+            </thead>
+            <tr th:each="tabHorario : ${tabHorarioes}">
+                <td th:text="${tabHorario.tabRuta.rutCod}"></td>
+                <td th:text="${tabHorario.tabBus.busUnidad}"></td>
+                <td th:text="${tabHorario.horHora}"></td>
+                <td th:text="${tabHorario.horServicio}"></td>
+                <td><a th:href="@{/tabHorario/eliminar/}+${tabHorario.horCodigo}">Eliminar</a></td>
+                <td><a th:href="@{/tabHorario/modificar/}+${tabHorario.horCodigo}">Modificar</a></td>
+            </tr>
+        </table>
+
+        <br/>
+        <br/>
+        <br/>
+        <div th:if="${(tabHorarioes == null or tabHorarioes.empty)}">
+          [[#{horario.no_mostrar}]]  
+        </div>
+    </div>
+        </section>
+    
+    
+    -->
+    
+    
+    <footer>
+        <a2 th:replace="layout/plantilla :: footer"/></a2>
+    
+    </footer>
+</body>
+</html>

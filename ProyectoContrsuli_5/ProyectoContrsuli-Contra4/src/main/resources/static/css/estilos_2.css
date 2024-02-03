@@ -1,0 +1,170 @@
+
+*{
+    /*
+    margin: 0px;
+    padding: 0px;
+    */
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+#main-container{
+    margin: 150px auto;
+    width: 500px;
+}
+
+table{
+    
+   position: relative;
+  
+     width: 70%;
+     background-color: white;
+     text-align: left;
+     border-collapse: collapse;
+     
+      
+     
+}
+
+th,td{
+    
+    padding: 5px;
+   
+}
+
+
+thead{
+    
+   
+    border-bottom: solid 4px #0F362D;
+    color:  white;
+    
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 44%, rgba(0,212,255,1) 100%);
+}
+
+tr:nth-child(even){
+   background-color: #ddd;
+   
+}
+tr:hover td{
+    background-color: #ff7514;
+    color: white;
+    
+}
+
+
+
+
+
+
+header{
+    padding: 10px;
+    
+    text-align: center;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 44%, rgba(0,212,255,1) 100%);
+}
+
+
+
+nav{
+    display: flex;
+    flex-direction: row;
+    
+    background-color: #333;
+}
+
+
+
+nav a{
+    color: white;
+    padding: 20px 20px;
+    text-decoration: none;
+    
+     position: relative;
+    left: 175px;
+    
+}
+
+
+
+.row{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+
+
+aside{
+    background-color: whitesmoke;
+    flex: 35;
+    border-right-width: 4px;
+    border-right: 3px solid #333;
+    display: block;
+    position: relative;
+    width: 100%;
+    
+    
+}
+
+section{
+    flex: 70%;
+    background-color: whitesmoke;
+    padding: 27px;
+    
+}
+
+footer{
+    
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  
+    background-color: #808080;
+    text-align: center;
+}
+
+
+@media screen and(max-width: 700px){
+    nav, .row{
+        flex-direction: column;
+    }
+} 
+
+/*
+col-md-9{
+    position: absolute;
+     left: 175px;
+}
+
+h2{
+    /*
+      position: relative;
+       left:  750px;
+       color: black;
+    padding: 20px;
+    text-decoration: none;
+      
+}
+
+article{
+     position: relative;
+    left: 150px;
+}
+
+p.new {
+    font-family: new times roman;
+   
+
+}
+
+*/

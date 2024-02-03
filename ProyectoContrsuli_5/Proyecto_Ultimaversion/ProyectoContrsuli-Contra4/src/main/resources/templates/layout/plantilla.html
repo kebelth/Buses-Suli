@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlsn:sec="http://www.thymeleaf.org/extras/springsecurity">
+    <head th:fragment="head">
+        <title>Contrasuli</title>
+       <meta charset="UTF-8"/>
+       
+      
+      <link rel="stylesheet" 
+              th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" 
+              th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>      
+    </head>
+    <body>
+        <header th:fragment="header" class="header">
+            <h1><FONT SIZE=17 COLOR="#FF6000">C</FONT><FONT COLOR="white" SIZE=10>ontrasuli</FONT></h1>
+ </header>
+    
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+                      
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+
+                <ul class="navbar-nav">
+                    <li class="nav-item px-2"> 
+                        <a class="nav-menu-link nav-link" th:href="@{/}">
+                            <FONT SIZE=5>[[#{menu.inicio}]]</FONT></a></li>    
+
+                <li class="nav-item px-2"> 
+                    <a class="nav-menu-link nav-link" th:href="@{/tabHorario/listado}"> 
+                        <FONT SIZE=5>[[#{menu.horarios}]]</FONT></a></li>
+
+                <li class="nav-item px-2">  
+                    <a class="nav-menu-link nav-link" th:href="@{/tabRuta/listado}"> 
+                        <FONT SIZE=5>[[#{menu.rutas}]]</FONT></a></li>
+
+                <li class="nav-item px-2"> 
+                    <a class="nav-menu-link nav-link" th:href="@{/tabTarifa/listado}">
+                        <FONT SIZE=5>[[#{menu.tarifas}]]</FONT></a></li>   
+       
+                <li class="nav-item px-2"> 
+                    <a class="nav-menu-link nav-link" th:href="@{/tabBus/listado}">
+                        <FONT SIZE=5>[[#{menu.buses}]]</FONT></a></li>   
+                    
+                 <!--  
+                 <li class="nav-item px-2">  
+                    <a class="nav-menu-link nav-link" th:href="@{/tabParada/listado}"> 
+                        <FONT SIZE=5>[[#{menu.parada}]]</FONT></a>
+                </li>     
+                 -->
+                    
+                <li class="nav-item px-2"> 
+                    <a class="nav-menu-link nav-link" th:href="@{/}"> 
+                        <FONT SIZE=5>[[#{menu.contacto}]]</FONT></a></li>
+            </ul>
+                 <ul class="navbar-nav">
+                            <li class="nav-item px-2">
+                                <a href="#" class="nav-link">
+                                    <i class="fas fa-user"></i>
+                                    [[#{plantilla.bienvenido}]]:
+                                    <span sec:authentication="name"> </span>
+                                </a>
+                            </li>
+                            <li class="nav-item mr-3">
+                                <form method="POST"
+                                      th:action="@{/logout}">
+                                    <a href="#" 
+                                       onclick="this.parentNode.submit();"
+                                       class="nav-link">
+                                        <i class="fas fa-user-times"></i> Salir
+                                    </a>
+                                </form>     
+                            </li>
+                        </ul>
+                </div>
+               
+                     
+        </nav>
+        
+        
+        
+     <!--    
+        
+ 
+        
+        
+         <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+                <div class="container">
+                    <a th:href="@{/}" class="navbar-brand">Contrasuli</a>
+                    <button class="navbar-toggler" 
+                            data-toggle="collapse" 
+                            data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav" sec:authorize="hasRole('ROLE_VENDEDOR')">
+                            <li class="nav-item px-2">
+                                <a th:href="@{/tabHorario/listado}" class="nav-menu-link nav-link">[[#{menu.horarios}]]</a>
+                            </li>
+                            <li class="nav-item px-2">
+                                <a th:href="@{/tabRuta/listado}" class="nav-menu-link nav-link">[[#{plantilla.categorias}]]</a>
+                            </li>
+                            <li class="nav-item px-2">
+                                <a th:href="@{/tabTarifa/listado}" class="nav-menu-link nav-link">[[#{plantilla.articulos}]]</a>
+                            </li>
+                            <li class="nav-item px-2" sec:authorize="hasRole('ROLE_ADMIN')">
+                                <a th:href="@{/admin/listado}" class="nav-menu-link nav-link">Admin</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item mr-3">
+                                <a href="#" class="nav-link">
+                                    <i class="fas fa-user"></i>
+                                    [[#{plantilla.bienvenido}]]:
+                                    <span sec:authentication="name"></span>
+                                </a>
+                            </li>
+                            <li class="nav-item mr-3">
+                                <form method="POST" 
+                                      th:action="@{/logout}">
+                                    <a href="#" 
+                                       onclick="this.parentNode.submit();"
+                                       class="nav-link">
+                                        <i class="fas fa-user-times"></i> [[#{plantilla.logout}]]                                   
+                                    </a>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <section id="main-header" class="py-2 bg-success text-white">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h1>
+                                <i class="fas fa-cog"></i> [[#{plantilla.titulo}]]
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+        -->
+        
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <footer>
+            <h1>Contrasuli®  [[#{footer}]] 2022&COPY</h1>
+            <p class="lead text-center">
+                <a th:href="@{/(lang=es)}" class="a">ES</a> | 
+                <a th:href="@{/(lang=en)}" class="a">EN</a>
+            </p>
+        </footer>
+    </body>
+</html>

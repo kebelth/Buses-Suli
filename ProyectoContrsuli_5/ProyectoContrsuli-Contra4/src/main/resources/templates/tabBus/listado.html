@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlsn:sec="http://www.thymeleaf.org/extras/springsecurity">
+    <head>
+    <title>Contrasuli</title>
+    <meta charset="UTF-8">
+    <link href="/css/estilos_2.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/menu_1.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" 
+              th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" 
+              th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+<body>
+    <header class="logo nav-link" th:replace="layout/plantilla :: header"/></header>
+<nav th:replace="layout/plantilla :: nav"/> 
+
+<div class="conteiner">
+    <h2>Buses</h2>
+    <table class="table">
+        <tr>
+            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/tabBus/nuevo}" class="a">Nueva bus</a></td>
+        </tr>
+    </table>
+   
+    <div class="row">
+        <div class="col-md-10 mx-auto">   
+    <div th:if="${tabBuses != null and !tabBuses.empty}">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Unidad</th>
+                            <th scope="col">Codigo Ruta</th>
+                            <th scope="col">Capacidad</th>
+                            <th scope="col" sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</th>
+                            <th scope="col" sec:authorize="hasRole('ROLE_ADMIN')">Modificar</th>
+                </tr>
+            </thead>
+            <tr th:each="tabBus : ${tabBuses}">
+                        <td th:text="${tabBus.busUnidad}"></td>
+                        <td th:text="${tabBus.rutId}"></td>
+                        <td th:text="${tabBus.busCapacidad}"></td>
+                        <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/tabBus/eliminar/}+${tabBus.busId}">Eliminar</a></td>
+                        <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/tabBus/modificar/}+${tabBus.busId}">Modificar</a></td>
+                    </tr>
+        </table>
+
+
+        <div th:if="${(tabBuses == null or tabBuses.empty)}">
+           [[#{buses.no.mostrar}]]
+        </div>
+    </div>
+</div>   
+    
+    </div>   
+</div>
+    <footer>
+        <a2 th:replace="layout/plantilla :: footer"/></a2>
+    </footer>
+</body>
+</html>

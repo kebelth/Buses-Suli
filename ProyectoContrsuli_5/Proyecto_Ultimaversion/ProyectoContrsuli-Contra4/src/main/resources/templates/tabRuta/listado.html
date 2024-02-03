@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
+    <head>
+    <title>Contrasuli</title>
+    <meta charset="UTF-8">
+    <link href="/css/estilos_2.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/menu_1.css" rel="stylesheet" type="text/css"/>
+     <link rel="stylesheet" 
+              th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" 
+              th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+        </head>
+    <body>
+    <header class="logo nav-link" th:replace="layout/plantilla :: header"/>
+<nav th:replace="layout/plantilla :: nav"/> 
+
+
+<div>
+    <h2>Rutas</h2>
+    <table class="table">
+        <tr>
+            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/tabRuta/nuevo}" class="a">Nueva Ruta</a></td>
+        </tr>
+    </table>
+</div>
+    
+
+
+
+<section th:replace="tabRuta/fragment_ruta :: listado_rutas"/>
+
+
+
+   
+   <!--  -->
+    
+     
+    <footer th:replace="layout/plantilla :: footer" />    
+</body>
+</html>

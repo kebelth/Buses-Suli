@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Contrasuli</title>
+        <meta charset="UTF-8">
+
+    </head>
+    <body>
+
+        <section th:fragment="listado_horarios" id="tabHorario">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>lista de horarios</h4>
+                            </div>
+                            <div th:if="${tabHorarioes != null and !tabHorarioes.empty}">                              
+                                <table class="table table-striped">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>Codigo de Ruta</th>
+                                            <th>Unidad</th>
+                                            <th>Hora</th>
+                                            <th>Tipo de servicio</th>
+                                            <th sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</th>
+                                            <th sec:authorize="hasRole('ROLE_ADMIN')">Modificar</th>
+                                        </tr>
+                                    </thead>
+                                     <tbody>
+                                    <tr th:each="tabHorario: ${tabHorarioes}">
+                                        <td th:text="${tabHorario.rutId}"></td>
+                                        <td th:text="${tabHorario.busId}"></td>
+                                        <td th:text="${tabHorario.horHora}"></td>
+                                        <td th:text="${tabHorario.horServicio}"></td>
+                                        <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/tabHorario/eliminar/}+${tabHorario.horCodigo}">Eliminar</a></td>
+                                        <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/tabHorario/modificar/}+${tabHorario.horCodigo}">Modificar</a></td>
+                                    </tr>
+                                        </tbody>
+                                </table>
+                            </div>
+                            <div   class="text-center p-2" th:if="${tabHorarioes == null or tabHorarioes.empty}">
+                                No tenemos lista de horarios que mostrar...
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+        </section> 
+
+
+    </body>
+</html>

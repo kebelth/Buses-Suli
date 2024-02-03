@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+       xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
+    <head>
+    <title>Contrasuli</title>
+    <meta charset="UTF-8">
+    <link href="/css/estilos_2.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/menu_1.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" 
+              th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" 
+              th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    </head>
+    <body>
+    <header class="logo nav-link" th:replace="layout/plantilla :: header"/></header>
+
+<nav th:replace="layout/plantilla :: nav"/> </nav>
+
+<div class="conteiner">
+    <div class-="row">
+        <font size="4"><a th:href="@{/tabBus/listado}" class="a">[[#{menu.regresar}]]</a></font>
+        <div class="col-md-6 mx-auto">
+            <div class="card">
+                <form th:action="@{/tabBus/guardar}" 
+                      method="post"
+                      th:object="${tabBus}">
+                    <input type="hidden" name="busId" th:field="*{busId}"/>
+                    <div class="card-header  bg-dark bg-gradient">
+                        <h2 class="text-center" style="color:#FF6000" >Buses</h2>
+                    </div>
+                    <div class="card-body ">
+
+                        <div class="input-group mb-3">
+                            <label for="tabRuta" class="input-group-text">Ruta:  </label>
+                            <select th:field="*{rutId}" >
+                                <option th:each="tabRuta : ${tabRutaes}"
+                                        th:value="${tabRuta.rutId}"
+                                        th:text="${tabRuta.rutNombre}"
+                                        class="form-control">
+                            </select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="busUnidad" class="input-group-text">Unidad: </label>
+                            <input type="number" name="busUnidad" th:field="*{busUnidad}" class="form-control"/>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="busCapacidad" class="input-group-text">Capacidad:</label>
+                            <input type="number" name="busCapacidad" th:field="*{busCapacidad}" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="card-footer d-grid gap-2 d-md-flex justify-content-md-end">
+                        <input type="submit" name="guardar" value="Guardar"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+    <footer>
+        <a2 th:replace="layout/plantilla :: footer"/>
+    </footer>
+    
+</body>
+</html>

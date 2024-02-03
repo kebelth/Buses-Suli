@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+       xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:sec="http://thymeleaf.org/extras/spring-security">
+    <head>
+    <title>Contrasuli</title>
+    <meta charset="UTF-8">
+    <link href="/css/estilos_2.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/menu_1.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" 
+              th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" 
+              th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+    <body>
+             <header class="logo nav-link" th:replace="layout/plantilla :: header"/>
+        
+    <nav th:replace="layout/plantilla :: nav"/> 
+    
+    
+    
+    <div class="conteiner">
+    <h2>Tarifas</h2>
+    <table class="table">
+        <tr>
+            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/tabTarifa/nuevo}" class="a">Nueva Tarifa</a></td>
+        </tr>
+    </table>
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+            <div th:if="${tabTarifaes != null and !tabTarifaes.empty}">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Codigo de Ruta</th>
+                            <th>Parada</th>
+                            <th>Precio</th>
+                            <th sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</th>
+                            <th sec:authorize="hasRole('ROLE_ADMIN')">Modificar</th>
+                        </tr>
+                    </thead>
+                    <tr th:each="tabTarifa : ${tabTarifaes}">
+                        <td th:text="${tabTarifa.rutId}"></td>
+                        <td th:text="${tabTarifa.idParada}"></td>
+                        <td th:text="${tabTarifa.tarPrecio}"></td>
+                        <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/tabTarifa/eliminar/}+${tabTarifa.tarId}">Eliminar</a></td>
+                        <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/tabTarifa/modificar/}+${tabTarifa.tarId}">Modificar</a></td>
+                    </tr>
+                </table>
+                <div th:if="${(tabTarifaes == null or tabTarifaes.empty)}">
+                    No tenemos Tarifas que mostrar...
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+   
+    <footer>
+        <a2 th:replace="layout/plantilla :: footer"/></a2>
+    </footer>
+    </body>
+</html>

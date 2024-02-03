@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org"
+      xmlns:th="http://wwww.thymeleaf.org" 
+      xmlns:sec="http://thymeleaft.org/extras/spring-security">
+    <head>
+    <title>Contrasuli</title>
+</head>
+
+
+        <section th:fragment="listado_rutas" id="rutId">
+               <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>listado de rutas</h4>
+                            </div>
+                              <div th:if="${tabRutaes != null and !tabRutaes.empty}">                              
+                                    <table class="table table-striped">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th th:text="rutaId">Id</th>
+                                                <th th:text="#{tabRuta.nombre}">nombre</th>
+                                                <th sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</th>
+                                                 <th sec:authorize="hasRole('ROLE_ADMIN')">Modificar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:each="tabRuta: ${tabRutaes}">
+                                                  <td>[[${tabRuta.rutId}]]</td>   
+                                                <td>[[${tabRuta.rutNombre}]]</td>  
+                                                <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/tabRuta/eliminar/}+${tabRuta.rutId}">Eliminar</a></td>
+                                                <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/tabRuta/modificar/}+${tabRuta.rutId}">Modificar</a></td>
+                                                
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div   class="text-center p-2" th:if="${tabRutaes == null or tabRutaes.empty}">
+                                    No tenemos lista de rutas no mostrar...
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+            </div>
+        </section> 
+        
+
+ 
+ 
+ 
+ 
+      
+    
+</html>

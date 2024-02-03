@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlsn:sec="http://www.thymeleaf.org/extras/springsecurity">
+    <head>
+    <title>Contrasuli</title>
+    <meta charset="UTF-8"/>
+    <link href="/css/estilos_2.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/menu_1.css" rel="stylesheet" type="text/css"/>
+
+    <link rel="stylesheet" 
+          th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" 
+          th:href="@{/webjars/font-awesome/css/all.css}"/>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    </head>
+    <body>
+    <header class="logo nav-link" th:replace="layout/plantilla :: header"/>
+
+<nav th:replace="layout/plantilla :: nav"/> 
+
+<div class="conteiner">
+    <div class-="row">
+        <font size="4"><a th:href="@{/tabParada/listado}" class="a">Regresar</a></font>
+        <div class="col-md-5 mx-auto">
+            <div class="card">
+                <div class="card-header bg-dark bg-gradient">
+                    <h2 class="text-center" style="color:#FF6000" >Paradas</h2>
+                </div>
+                <div class="card-body ">
+                    <form th:action="@{/tabParada/guardar}" 
+                          method="post"
+                          th:object="${tabParada}">
+                        
+                        <input type="hidden" name="idParada" th:field="*{idParada}"/>
+                        <div class="input-group mb-3">
+                            <label for="tabRuta" class="input-group-text">Ruta:  </label>
+                            <select th:field="*{rutId}" >
+                            <option th:each="tabRuta : ${tabRutaes}"
+                                    th:value="${tabRuta.rutId}"
+                                    th:text="${tabRuta.rutNombre}"
+                                    class="form-control">
+                        </select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="parNombre" class="input-group-text">Nombre de Parada: </label>
+                            <input type="text" name="parNombre" th:field="*{parNombre}" class="form-control"/>
+                        </div>
+                </div>
+                <div class="card-footer d-grid gap-2 d-md-flex justify-content-md-end">
+                        <input type="submit" name="guardar" value="Guardar"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        
+
+    </div>
+</div>
+    <footer>
+        <a2 th:replace="layout/plantilla :: footer"/></a2>
+    </footer>
+    </body>
+</html>
